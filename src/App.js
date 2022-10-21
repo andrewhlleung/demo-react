@@ -1,28 +1,65 @@
+// import logo from './logo.svg';
+// import './App.css';
 import React, { useState } from 'react';
 import {BrowserRouter,Route,Routes,Link} from 'react-router-dom'
-import Checkout from './Checkout';
-import ProductDetail from './ProductDetail';
-import ProductList from './ProductList';
-import { CartContext } from './CartContext';
+
+import { LoginContext } from './LoginContext';
+
+import { GoogleLogin } from 'react-google-login';
+import { gapi } from 'gapi-script';
+import { useEffect } from 'react';
+import Dashboard from './Dashboard';
 
 function App() {
-  const [cartItems,setCartItems] = useState([]);
+  const [loginSession,setLoginSession] = useState({});
+  
+  const clientId = "192746984035-74ptcai60m8ralhv020d6vra4osdpvq8.apps.googleusercontent.com";
+  useEffect(() => {
+      const initClient = () => {
+            gapi.client.init({
+            clientId: clientId,
+            scope: ''
+          });
+      };
+      gapi.load('client:auth2', initClient);
+  });
+  
+  const onSuccess = (res) => {
+    //console.log('onSuccess:', res);
+    setLoginSession(res)
+  };
+  const onFailure = (err) => {
+    //console.log('onFailure:', err);
+    setLoginSession({})
+  };
+
   return (
-    <BrowserRouter>
-    <CartContext.Provider value={{cartItems,setCartItems}}>
-      <Link to="/" >mainpage</Link>
-      <Link to="/checkout" >checkout</Link>
-      <Routes>
-        <Route path="/" element={<ProductList/>} />
-        <Route path="/product" element={<ProductDetail/>} >
-          <Route path=":id" element={<ProductDetail/>} />
-        </Route>
-        <Route path="/checkout" element={<Checkout/>} />
-        <Route path="*" element={<p>no this page</p>} />
-      </Routes>
-    </CartContext.Provider>
-    </BrowserRouter>
+    <>
+    
+      {( loginSession.profileObj ) &&
+      <BrowserRouter>
+        <LoginContext.Provider value={{loginSession,setLoginSession}}>
+          <Routes>
+            <Route path="/" element={<Dashboard/>} />
+          </Routes>
+        </LoginContext.Provider>
+      </BrowserRouter>
+        }
+
+      {( !loginSession.profileObj ) &&
+      <GoogleLogin
+              clientId={clientId}
+              buttonText="Sign in with Google"
+              onSuccess={onSuccess}
+              onFailure={onFailure}
+              cookiePolicy={'single_host_origin'}
+              isSignedIn={true}
+          />
+      }
+    
+    </>
   );
+
 }
 
 export default App;
