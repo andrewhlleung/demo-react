@@ -28,7 +28,7 @@ useEffect(()=>{
     headers: myHeaders,
     body: raw,
     redirect: 'follow',
-    mode:'cors'
+    mode:'no-cors'
   };
   
   fetch("https://data.mongodb-api.com/app/data-uddjz/endpoint/data/v1/action/find", requestOptions)
