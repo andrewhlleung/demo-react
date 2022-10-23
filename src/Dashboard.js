@@ -13,7 +13,7 @@ export default function Dashboard() {
 
 useEffect(()=>{
   var myHeaders = new Headers();
-  myHeaders.append("api-key", "zjsocERDuMnQOiL1VcIsE2DdVmf4Ux7HsyKKVFRItyXhfFWRpg4Mv0HPgffC2J9X");
+  //myHeaders.append("api-key", "zjsocERDuMnQOiL1VcIsE2DdVmf4Ux7HsyKKVFRItyXhfFWRpg4Mv0HPgffC2J9X");
   myHeaders.append("Content-Type", "application/json");
   
   var raw = JSON.stringify({
@@ -31,7 +31,7 @@ useEffect(()=>{
     mode:'no-cors'
   };
   
-  fetch("https://data.mongodb-api.com/app/data-uddjz/endpoint/data/v1/action/find", requestOptions)
+  fetch("https://demo-react-40m.pages.dev/api/try", requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
