@@ -24,12 +24,12 @@ export async function onRequest(context) {  // Contents of context object  const
     .then(
       result => {
         console.log(result)
-        return new Response(result);
-        //returnResponse=result
+        //return new Response(result);
+        returnResponse=result
       }
     )
     .catch(error => console.log('error', error));  
   
-  return new Response({});
+  return new Response(returnResponse);
   }
   
