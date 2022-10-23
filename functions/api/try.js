@@ -19,16 +19,16 @@ export async function onRequest(context) {  // Contents of context object  const
     mode:'no-cors'
   };
   var returnResponse = {}
-  await fetch("https://data.mongodb-api.com/app/data-uddjz/endpoint/data/v1/action/find", requestOptions)
-    .then(response => response.text())
-    .then(
-      result => {
-        console.log(result)
-        //return new Response(result);
-        returnResponse=result
-      }
-    )
-    .catch(error => console.log('error', error));  
+  // await fetch("https://data.mongodb-api.com/app/data-uddjz/endpoint/data/v1/action/find", requestOptions)
+  //   .then(response => response.text())
+  //   .then(
+  //     result => {
+  //       console.log(result)
+  //       //return new Response(result);
+  //       returnResponse=result
+  //     }
+  //   )
+  //   .catch(error => console.log('error', error));  
   
   return new Response(returnResponse);
   }
