@@ -1,4 +1,14 @@
 export async function onRequest(context) {  // Contents of context object  const {    request, // same as existing Worker API    env, // same as existing Worker API    params, // if filename includes [id] or [[path]]    waitUntil, // same as ctx.waitUntil in existing Worker API    next, // used for middleware or to fetch assets    data, // arbitrary space for passing data between middlewares  } = context;
+  // Contents of context object
+  const {
+    request, // same as existing Worker API
+    env, // same as existing Worker API
+    params, // if filename includes [id] or [[path]]
+    waitUntil, // same as ctx.waitUntil in existing Worker API
+    next, // used for middleware or to fetch assets
+    data, // arbitrary space for passing data between middlewares
+  } = context;
+
   
   var myHeaders = new Headers();
   myHeaders.append("api-key", "zjsocERDuMnQOiL1VcIsE2DdVmf4Ux7HsyKKVFRItyXhfFWRpg4Mv0HPgffC2J9X");
@@ -19,6 +29,7 @@ export async function onRequest(context) {  // Contents of context object  const
     mode:'no-cors'
   };
   var returnResponse = {
+      "context":context,
       "documents": [
         {"id" : 1,"name" : "蘋果", "price" : 5, "image" : "apple.jpg","description":"新鮮蘋果50克，一日一蘋果，醫生遠離我"},
         {"id" : 2,"name" : "橙", "price" : 3, "image" : "orange.jpg","description":"新鮮橙50克，又甜又好吃"},
