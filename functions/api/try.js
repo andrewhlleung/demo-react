@@ -23,10 +23,10 @@ export async function onRequest(context) {  // Contents of context object  const
     .then(response => response.text())
     .then(
       result => {
-        console.log(result)
+        //console.log(result)
         //return new Response(result);
         returnResponse=result
-        return new Response(JSON.stringify(returnResponse))
+        //return new Response(JSON.stringify(returnResponse))
       }
     )
     .catch(error => console.log('error', error));  
