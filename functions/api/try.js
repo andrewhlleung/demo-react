@@ -46,6 +46,7 @@ export async function onRequest(context) {  // Contents of context object  const
     returnResponse.documents=result
   }else{
     returnResponse.response_ok="F"
+    returnResponse.response_status=response.status
   }
   /*
   await fetch("https://data.mongodb-api.com/app/data-uddjz/endpoint/data/v1/action/find", requestOptions)
