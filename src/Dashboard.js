@@ -35,7 +35,9 @@ export default function Dashboard() {
       .then(response => response.text())
       .then(result => {
         console.log(result)
-        setProdustList(JSON.parse(result).documents)
+        let resultObj= JSON.parse(result)
+        console.log(resultObj.documents)
+        setProdustList(resultObj.documents)
       })
       .catch(error => console.log('error', error));
 
