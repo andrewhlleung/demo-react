@@ -24,12 +24,17 @@ export async function onRequest(context) {  // Contents of context object  const
     .then(
       result => {
         //console.log(result)
-        //return new Response(result);
         returnResponse=result
-        //return new Response(JSON.stringify(returnResponse))
+        return new Response(JSON.stringify(returnResponse))
       }
     )
-    .catch(error => console.log('error', error));  
+    .catch(
+      error => {
+        console.log('error', error)
+        returnResponse=error
+        return new Response(JSON.stringify(returnResponse))
+      }
+    );  
   
   return new Response(JSON.stringify(returnResponse))
   }
