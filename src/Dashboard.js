@@ -55,7 +55,10 @@ export default function Dashboard() {
       {
         productList.map((product)=>(
           <div key={product.id}>
-            {product.name}
+          {product.image}<br/>
+            {product.name}<br/>
+            {product.description}<br/>
+            {product.price}<br/>
           </div>
         ))
       }
