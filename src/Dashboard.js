@@ -2,6 +2,7 @@
 import React, { useContext, useEffect,useState } from 'react';
 import { GoogleLogin,GoogleLogout } from 'react-google-login';
 import { LoginContext } from './LoginContext';
+import config from './config.json';
 
 export default function Dashboard() {
   const {loginSession,setLoginSession} = useContext(LoginContext);
@@ -13,7 +14,7 @@ export default function Dashboard() {
   const [productList,setProdustList] = useState([]);
   useEffect(()=>{
     
-    if( process.env.MODE==="production" ){
+    if( config.mode==="production" ){
       var myHeaders = new Headers();
       //myHeaders.append("api-key", "zjsocERDuMnQOiL1VcIsE2DdVmf4Ux7HsyKKVFRItyXhfFWRpg4Mv0HPgffC2J9X");
       myHeaders.append("Content-Type", "application/json");
@@ -45,7 +46,7 @@ export default function Dashboard() {
   },[])
 
   return (
-    <><div>MODE: {process.env.MODE}</div>
+    <><div>MODE: {config.mode}</div>
       {loginSession.profileObj.email}
       <GoogleLogout
         buttonText="Logout"
