@@ -39,7 +39,7 @@ export async function onRequest(context) {  // Contents of context object  const
         {"id" : 6,"name" : "白蘿蔔", "price" : 5,"image" : "white-carrot.jpg","description":"新鮮白蘿蔔1公斤，宜煲湯"}
       ]
   }
-  const response = await fetch("https://data.mongodb-api.com/app/data-uddjz/endpoint/data/v1/action/find");
+  const response = await fetch("https://data.mongodb-api.com/app/data-uddjz/endpoint/data/v1/action/find",requestOptions);
   if( response.ok ){
     returnResponse.response_ok="T"
     const result = await response.text();
