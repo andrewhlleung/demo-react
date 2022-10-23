@@ -19,6 +19,7 @@ export async function onRequest(context) {  // Contents of context object  const
     mode:'no-cors'
   };
   var returnResponse = {}
+  /*
   await fetch("https://data.mongodb-api.com/app/data-uddjz/endpoint/data/v1/action/find", requestOptions)
     .then(response => response.text())
     .then(
@@ -30,11 +31,12 @@ export async function onRequest(context) {  // Contents of context object  const
     )
     .catch(
       error => {
-        console.log('error', error)
+        //console.log('error', error)
         returnResponse=error
         return new Response(JSON.stringify(returnResponse))
       }
-    );  
+    );
+  */
   
   return new Response(JSON.stringify(returnResponse))
   }
