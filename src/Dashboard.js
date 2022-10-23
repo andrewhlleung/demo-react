@@ -53,11 +53,11 @@ export default function Dashboard() {
       </GoogleLogout>
       <p>product count: {productList.length}</p>
       {
-        productList.map((product)=>{
-          <div>
+        productList.map((product)=>(
+          <div key={product.id}>
             {product.name}
           </div>
-        })
+        ))
       }
     </>
   )
