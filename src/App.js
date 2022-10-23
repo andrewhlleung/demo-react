@@ -9,6 +9,7 @@ import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script';
 import { useEffect } from 'react';
 import Dashboard from './Dashboard';
+import { Button,Container ,Row,Col,Card } from 'react-bootstrap';
 
 function App() {
   const [loginSession,setLoginSession] = useState({});
@@ -47,14 +48,16 @@ function App() {
         }
 
       {( !loginSession.profileObj ) &&
-      <GoogleLogin
-              clientId={clientId}
-              buttonText="Sign in with Google"
-              onSuccess={onSuccess}
-              onFailure={onFailure}
-              cookiePolicy={'single_host_origin'}
-              isSignedIn={true}
-          />
+      <Container>
+        <GoogleLogin
+                clientId={clientId}
+                buttonText="Sign in with Google"
+                onSuccess={onSuccess}
+                onFailure={onFailure}
+                cookiePolicy={'single_host_origin'}
+                isSignedIn={true}
+            />
+      </Container>
       }
     
     </>
