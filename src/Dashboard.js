@@ -51,6 +51,7 @@ export default function Dashboard() {
         onLogoutSuccess={onLogout}
       >
       </GoogleLogout>
+      <p>product count: {productList.length}</p>
       {
         productList.map((product)=>{
           <div>
