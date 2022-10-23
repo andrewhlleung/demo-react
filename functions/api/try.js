@@ -1,5 +1,3 @@
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./note.sqlite');
 
 export async function onRequest(context) {  // Contents of context object  const {    request, // same as existing Worker API    env, // same as existing Worker API    params, // if filename includes [id] or [[path]]    waitUntil, // same as ctx.waitUntil in existing Worker API    next, // used for middleware or to fetch assets    data, // arbitrary space for passing data between middlewares  } = context;
   // Contents of context object
@@ -41,14 +39,6 @@ export async function onRequest(context) {  // Contents of context object  const
         {"id" : 5,"name" : "藍梅", "price" : 10,"image" : "blueberry.jpg","description":"新鮮藍梅50克，補眼之寶"},
         {"id" : 6,"name" : "白蘿蔔", "price" : 5,"image" : "white-carrot.jpg","description":"新鮮白蘿蔔1公斤，宜煲湯"}
       ]
-  }
-  try{
-    (async () => {
-        const result = await db.query("select * from note", []);
-        returnResponse.db_length=result.rows.length;
-    })();
-  }catch(err){
-    returnResponse.response_err=err
   }
   /*
   try{
