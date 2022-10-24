@@ -1,0 +1,6 @@
+name = "worker"
+
+# ...
+
+kv_namespaces = [  { binding = "NOTE_SPACE", id = "ae638870224e40f6bc34c000175d6c90" }
+]
