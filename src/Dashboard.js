@@ -60,7 +60,7 @@ export default function Dashboard() {
       <p>product count: {productList.length}</p>
 
 
-      <Row xs={2} md={4} className="g-4">
+      <Row lg={6} xl={12} className="g-4">
         {
         productList.map((product)=>(
           <Col>
