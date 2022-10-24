@@ -1,6 +1,7 @@
 
 export async function onRequest(context) {
   
+    return new Response(JSON.stringify(context.env));
   
   
   const value = await NOTE_SPACE.get("product_list");
