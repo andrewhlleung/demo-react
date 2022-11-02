@@ -3,7 +3,7 @@ export async function onRequest(context) {
 
       //get the ENV var for the binding 
       //note this is the variable name you added in the KV bindings in your Cloudflare pages set up.
-      const KV = context.env.ALLOW_TEST;
+      const KV = context.env.env_variable;
 
       //put a variable in place. 
       KV.put("foo", "bar",{})
@@ -20,6 +20,7 @@ export async function onRequest(context) {
       //list the keys
       const value = await KV.list()
       console.log(value)
+      context.kv=value
   
     return new Response(JSON.stringify(context));
   }
